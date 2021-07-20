@@ -64,8 +64,15 @@ public class RubricaDAO {
 		} finally {
 
 			if (stat != null) {
+
 				try {
 					stat.close();
+				} catch (Exception e) {
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
 				} catch (Exception e) {
 				}
 			}
