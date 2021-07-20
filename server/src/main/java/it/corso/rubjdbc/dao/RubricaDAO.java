@@ -6,7 +6,19 @@ import it.corso.rubjdbc.model.Contatto;
 
 public class RubricaDAO {
 	
-	public Contatto salva (Contatto c) {	
+	private static RubricaDAO rubDao;
+	
+	private RubricaDAO () {	
+	}
+	
+	public static RubricaDAO getDao () {
+		if (rubDao == null) {
+			rubDao = new RubricaDAO();
+		} return rubDao;
+	}
+	
+	public Contatto salva (Contatto c) {
+		return c;	
 	}
 	
 	public void rimuovi (Contatto c) {
@@ -14,7 +26,13 @@ public class RubricaDAO {
 	
 	public List<Contatto> trovaTutti(){
 		
+		
+		
+		return null;
+		
 	}
+	
+	
 	
 	
 

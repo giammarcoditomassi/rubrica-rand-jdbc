@@ -2,26 +2,29 @@ package it.corso.rubjdbc.service;
 
 import java.util.List;
 
+import it.corso.rubjdbc.dao.RubricaDAO;
 import it.corso.rubjdbc.model.Contatto;
 
 public class RubricaServiceImpl implements RubricaService {
 
+	RubricaDAO dao = RubricaDAO.getDao();
+	
 	@Override
 	public List<Contatto> salva(Contatto c) {
-		// TODO Auto-generated method stub
-		return null;
+		dao.salva(c);
+		return tornaTutti();
 	}
 
 	@Override
 	public List<Contatto> rimuovi(Contatto c) {
-		// TODO Auto-generated method stub
-		return null;
+		dao.rimuovi(c);
+		return tornaTutti();
 	}
 
 	@Override
 	public List<Contatto> tornaTutti() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.trovaTutti();
+		
 	}
 
 }
