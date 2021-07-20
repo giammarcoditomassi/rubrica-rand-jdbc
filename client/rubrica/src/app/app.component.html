@@ -1,0 +1,29 @@
+<h1>Rubrica telefonica</h1>
+<br>
+Nome<input type="text" [(ngModel)]="contatto.nome">
+Cognome<input type="text" [(ngModel)]="contatto.cognome"> 
+Telefono<input type="text" [(ngModel)]="contatto.telefono">
+
+<br>
+<button (click)="aggiungi()">
+  <h6>Aggiungi</h6>
+</button>
+<br>
+
+<h2>Lista Contatti</h2>
+<table>
+  <tr>
+    <th>Id contatto</th>
+    <th>Nome</th>
+    <th>Cognome</th>
+    <th>Telefono</th>
+  </tr>
+  <tr *ngFor="let c of contatti">
+    <td>{{c.id}}</td>
+    <td>{{c.nome}}</td>
+    <td>{{c.cognome}}</td>
+    <td>{{c.telefono}} </td>
+    <td>
+      <button (click)="rimuovi(c)">Elimina</button>
+    </td>
+  </tr>
