@@ -2,6 +2,7 @@ package it.corso.rubjdbc.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -28,6 +29,25 @@ public class RubricaDAO {
 	}
 
 	public void rimuovi(Contatto c) {
+
+		// Connection con = null;
+		// PreparedStatement stat = null;
+		String sql = "delete from contatto where id = ? ";
+		// stat = con.createStatement();
+
+		try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/rubricarand", "root", "");
+				PreparedStatement stat = con.prepareStatement(sql)) {
+
+			stat.setLong(1, c.getId());
+
+			int num = stat.executeUpdate();
+
+		} catch (Exception ex) {
+
+			ex.printStackTrace();
+			// return new ArrayList<>();
+
+		}
 	}
 
 	public List<Contatto> trovaTutti() {
@@ -63,10 +83,10 @@ public class RubricaDAO {
 
 		} finally {
 
-			if (stat != null) {
+			if (stmt != null) {
 
 				try {
-					stat.close();
+					stmt.close();
 				} catch (Exception e) {
 				}
 			}
